@@ -8,11 +8,11 @@ namespace GrafosEArte
 {
     class Vertice
     {
-        public object[] ponto { get; set; }
+        public object ponto { get; set; }
     }
 
     /// <summary>
-    /// Aresta é a junção de duas faces
+    /// Aresta é a junção de duas vertices
     /// </summary>
     class Aresta
     {
@@ -21,6 +21,8 @@ namespace GrafosEArte
 
     class Grafo
     {
+        public Vertice[] Vetices { get; set; }
+
         public Dictionary<Vertice, Aresta> ConjuntoDeVetice { get; set; }
     }
 
@@ -28,7 +30,10 @@ namespace GrafosEArte
     {        
         static void Main(string[] args)
         {
-            //object grafo = (Vertice, Arestas);
+            var sudeste = new Grafo();
+            var SaoPaulo = "São Paulo";
+            var MinasGerais = "Minas Gerais";
+            var EspiritoStanto = "Espirito Santo";
         }
     }
 }
