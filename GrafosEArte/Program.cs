@@ -6,34 +6,52 @@ using System.Threading.Tasks;
 
 namespace GrafosEArte
 {
-    class Vertice
-    {
-        public object ponto { get; set; }
+    class Vertice {
+        public Vertice(string ponto) {
+            this.Ponto = ponto;
+        }
+        public string Ponto { get; set; }
+    }
+        
+    class Aresta {
+        public Aresta(Vertice vertice1, Vertice vertice2)
+        {
+            Vertice[] aresta = new Vertice[2];
+            aresta[0] = vertice1;
+            aresta[1] = vertice2;
+            this.DuplaDeVetices = aresta;
+        }
+        public Vertice[] DuplaDeVetices { get; set; }
     }
 
-    /// <summary>
-    /// Aresta é a junção de duas vertices
-    /// </summary>
-    class Aresta
-    {
-        public Dictionary<Vertice, Vertice> DuplaDeVetices { get; set; }
-    }
-
-    class Grafo
-    {
+    class Grafo {
+        public Grafo(Vertice[] vetices, Aresta[] aresta)
+        {
+            this.Vetices = vetices;
+            this.Aresta = aresta;
+        }
         public Vertice[] Vetices { get; set; }
-
-        public Dictionary<Vertice, Aresta> ConjuntoDeVetice { get; set; }
+        public Aresta[] Aresta { get; set; }
     }
 
     class Program
     {        
         static void Main(string[] args)
-        {
-            var sudeste = new Grafo();
-            var SaoPaulo = "São Paulo";
-            var MinasGerais = "Minas Gerais";
-            var EspiritoStanto = "Espirito Santo";
+        {   
+            Vertice[] vertices = new Vertice[4];
+            vertices[0] = new Vertice("São Paulo");
+            vertices[1] = new Vertice("Minas Gerais");
+            vertices[2] = new Vertice("Espirito Santo");
+            vertices[3] = new Vertice("Rio de Janeiro");
+
+            Aresta aresta1 = new Aresta(vertices[0], vertices[1]);
+            Aresta aresta2 = new Aresta(vertices[0], vertices[3]);
+            Aresta aresta3 = new Aresta(vertices[1], vertices[2]);
+            Aresta aresta4 = new Aresta(vertices[1], vertices[3]);
+            Aresta aresta5 = new Aresta(vertices[2], vertices[3]);
+
+            Grafo RegiaoSudeste = new Grafo(vertices, Arestas);
+            Console.Write(RegiaoSudeste);
         }
     }
 }
